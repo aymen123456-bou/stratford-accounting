@@ -1,0 +1,2 @@
+# stratford-accounting
+global warming
