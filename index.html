@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table Élévatrice Hydraulique | Dimensionnement express</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero__badge">Calculateur pro</div>
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Ingénierie & hydraulique</p>
+          <h1>Dimensionnez votre <span class="accent">table élévatrice</span> en quelques clics</h1>
+          <p class="lede">
+            Obtenez un pré-dimensionnement instantané, un récapitulatif complet et un export imprimable pour valider votre cahier des charges.
+          </p>
+          <ul class="feature-list">
+            <li>Analyse des charges et paramètres géométriques</li>
+            <li>Calcul de la puissance moteur et du vérin</li>
+            <li>Résultats prêts à être partagés avec vos équipes</li>
+          </ul>
+          <div class="hero__cta">
+            <a class="button" href="#formulaire">Commencer la demande</a>
+            <button class="button button--ghost" type="button" id="explore-gallery">Voir la galerie</button>
+          </div>
+        </div>
+        <div class="hero__media">
+          <div class="carousel" aria-live="polite">
+            <img id="carousel-image" src="" alt="Visualisation de table élévatrice" />
+            <button class="carousel__control" id="prev-image" aria-label="Image précédente">‹</button>
+            <button class="carousel__control" id="next-image" aria-label="Image suivante">›</button>
+            <div class="carousel__dots" id="carousel-dots"></div>
+          </div>
+          <p class="caption">Vue illustrative d'une table élévatrice à vérin hydraulique</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="formulaire" class="card">
+        <div class="card__header">
+          <div>
+            <p class="eyebrow">Demande avancée</p>
+            <h2>Formulaire constructeur</h2>
+            <p class="muted">Renseignez vos paramètres pour calculer un premier dimensionnement.</p>
+          </div>
+          <div class="badge badge--soft">Réponse immédiate</div>
+        </div>
+
+        <form id="dimension-form" class="form">
+          <div class="form__group">
+            <h3>Informations générales</h3>
+            <div class="grid">
+              <label class="field">
+                <span>Nom de l'entreprise *</span>
+                <input name="nomEntreprise" type="text" required placeholder="Votre entreprise" />
+              </label>
+              <label class="field">
+                <span>Nom du contact *</span>
+                <input name="nomContact" type="text" required placeholder="Jean Dupont" />
+              </label>
+            </div>
+            <div class="grid">
+              <label class="field">
+                <span>Email *</span>
+                <input name="email" type="email" required placeholder="contact@example.com" />
+              </label>
+              <label class="field">
+                <span>Téléphone *</span>
+                <input name="telephone" type="tel" required placeholder="+33 6 00 00 00 00" />
+              </label>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <h3>Charge & géométrie</h3>
+            <div class="grid grid--3">
+              <label class="field"><span>H<sub>min</sub> (m) *</span><input name="hauteurMin" type="number" step="0.01" min="0" value="0.5" required /></label>
+              <label class="field"><span>H<sub>max</sub> (m) *</span><input name="hauteurMax" type="number" step="0.01" min="0" value="1.5" required /></label>
+              <label class="field"><span>Charge utile (kg) *</span><input name="chargeUtile" type="number" step="10" min="1" value="1000" required /></label>
+            </div>
+            <div class="grid grid--3">
+              <label class="field"><span>Coefficient de sécurité *</span><input name="coefficientSecurite" type="number" step="0.1" min="1" value="1.5" required /></label>
+              <label class="field"><span>Longueur bras (m) *</span><input name="longueurBras" type="number" step="0.01" min="0.1" value="0.5" required /></label>
+              <label class="field"><span>Angle min bras (°) *</span><input name="angleMinBras" type="number" step="0.1" min="0" value="30" required /></label>
+            </div>
+            <div class="grid grid--3">
+              <label class="field"><span>Distance pivot-ancrage (m) *</span><input name="distancePivotAncrage" type="number" step="0.01" min="0" value="0.1" required /></label>
+              <label class="field"><span>Nombre d'étages *</span><input name="nombreEtages" type="number" step="1" min="1" value="2" required /></label>
+              <label class="field"><span>Vitesse de montée (m/s) *</span><input name="vitesseMontee" type="number" step="0.01" min="0.01" value="0.1" required /></label>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <h3>Matériaux</h3>
+            <div class="grid grid--3">
+              <label class="field"><span>Contrainte admissible σ<sub>adm</sub> (MPa) *</span><input name="contrainteAdmissible" type="number" step="1" min="1" value="250" required /></label>
+              <label class="field"><span>Module d'Young E (GPa) *</span><input name="moduleYoung" type="number" step="1" min="1" value="210" required /></label>
+              <label class="field"><span>Masse volumique (kg/m³) *</span><input name="masseVolumique" type="number" step="10" min="1" value="7850" required /></label>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <h3>Hydraulique</h3>
+            <div class="grid grid--3">
+              <label class="field"><span>Pression max (bar) *</span><input name="pressionMax" type="number" step="1" min="1" value="210" required /></label>
+              <label class="field"><span>Rendement hydraulique *</span><input name="rendementHydraulique" type="number" step="0.01" min="0" max="1" value="0.85" required /></label>
+              <label class="field"><span>Nombre d'étages (répété)</span><input value="2" disabled /></label>
+            </div>
+          </div>
+
+          <div class="form__actions">
+            <button class="button" type="submit">Calculer et enregistrer</button>
+            <p class="helper">Vos données ne quittent pas votre navigateur. Résultat instantané.</p>
+          </div>
+        </form>
+      </section>
+
+      <section id="results" class="card card--result" hidden>
+        <div class="card__header">
+          <div>
+            <p class="eyebrow">Récapitulatif</p>
+            <h2>Résultats du dimensionnement</h2>
+            <p class="muted">Tableau récapitulatif prêt à être exporté ou imprimé.</p>
+          </div>
+          <div class="badge badge--success" id="result-status">Calcul enregistré</div>
+        </div>
+
+        <div class="results__grid">
+          <div class="result-block">
+            <h3>Paramètres saisis</h3>
+            <dl id="input-summary" class="summary"></dl>
+          </div>
+          <div class="result-block">
+            <h3>Pré-dimensionnement</h3>
+            <dl id="output-summary" class="summary summary--accent"></dl>
+          </div>
+        </div>
+
+        <div class="callout">
+          <p><strong>✓ Votre demande a été enregistrée.</strong> Un expert analysera ces résultats pour valider le choix du modèle et affiner les sections.</p>
+        </div>
+
+        <div class="form__actions">
+          <button class="button" type="button" id="new-request">Nouvelle demande</button>
+          <button class="button button--ghost" type="button" onclick="window.print()">Imprimer</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <p class="eyebrow">Assistance</p>
+        <h3>Besoin d'aide supplémentaire ?</h3>
+        <p class="muted">Contactez notre équipe pour une étude complète ou des plans détaillés.</p>
+      </div>
+      <div class="footer__actions">
+        <a class="button" href="mailto:hello@reallygreatsite.com">Écrire à un expert</a>
+        <a class="button button--ghost" href="tel:+33123456789">Appeler le support</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
